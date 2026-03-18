@@ -1,0 +1,23 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "@next/next/no-img-element": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "components/ui/animated-dock.tsx",
+        "components/ui/scroll-animated-video.tsx",
+        "components/ui/sparkles.tsx",
+        "components/ui/zoom-parallax.tsx",
+        "components/ui/tubelight-navbar.tsx"
+      ],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "react-hooks/exhaustive-deps": "off"
+      }
+    }
+  ]
+}
