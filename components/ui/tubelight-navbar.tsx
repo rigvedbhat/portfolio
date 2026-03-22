@@ -28,9 +28,32 @@ export function NavBar({ items, className }: NavBarProps) {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      let newActiveTab = items[0].name
+      for (const item of items) {
+        if (!item.url.startsWith("#")) continue
+        const element = document.getElementById(item.url.slice(1))
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          const sectionTop = rect.top + window.scrollY
+          // If the section's top is pushed down to 30% of the viewport, consider it active
+          if (window.scrollY >= sectionTop - window.innerHeight * 0.3) {
+            newActiveTab = item.name
+          }
+        }
+      }
+      setActiveTab(newActiveTab)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    handleScroll()
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [items])
+
   return (
-    <div className={cn("fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6", className)}>
-      <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+    <div className={cn("fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 pointer-events-none", className)}>
+      <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg pointer-events-auto">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name

@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: 240 14% 5%;
+  --background: 240 20% 4%;
   --foreground: 220 14% 91%;
-  --card: 240 14% 8%;
+  --card: 240 16% 8%;
   --card-foreground: 220 14% 91%;
-  --popover: 240 14% 8%;
+  --popover: 240 16% 8%;
   --popover-foreground: 220 14% 91%;
   --primary: 262 83% 57%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 240 11% 14%;
+  --secondary: 240 12% 14%;
   --secondary-foreground: 220 14% 91%;
   --muted: 240 10% 14%;
   --muted-foreground: 220 9% 62%;
@@ -36,15 +36,37 @@
   }
 
   body {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    overflow-x: hidden;
     background: #080810;
     color: #e5e7eb;
-    overflow-x: hidden;
-    min-height: 100vh;
     font-family: var(--font-inter), Inter, sans-serif;
-    background-image:
-      radial-gradient(circle at 10% 0%, rgba(124, 58, 237, 0.12), transparent 30%),
-      radial-gradient(circle at 90% 12%, rgba(34, 211, 238, 0.08), transparent 28%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 25%);
+  }
+
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  body::before {
+    z-index: -2;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(124, 58, 237, 0.16), transparent 24%),
+      radial-gradient(circle at 82% 16%, rgba(34, 211, 238, 0.1), transparent 18%),
+      radial-gradient(circle at 50% 42%, rgba(34, 211, 238, 0.14), transparent 18%),
+      linear-gradient(180deg, #020204 0%, #04050a 34%, #05060c 100%);
+  }
+
+  body::after {
+    z-index: -1;
+    background:
+      radial-gradient(circle at center, rgba(255, 255, 255, 0.03), transparent 45%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.28) 100%);
   }
 
   a {
@@ -58,6 +80,10 @@
   }
 }
 
+.site-shell {
+  position: relative;
+}
+
 .hero-scroll-shell {
   --bg: transparent !important;
   --text: #e5e7eb !important;
@@ -69,6 +95,10 @@
   --accent: #7c3aed !important;
   --accent-2: #22d3ee !important;
   --shadow: 0 24px 90px rgba(0, 0, 0, 0.45) !important;
+}
+
+.hero-scroll-shell .hsv-container {
+  position: relative;
 }
 
 .hero-scroll-shell .hsv-container::before {

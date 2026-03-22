@@ -108,7 +108,7 @@ export const HeroScrollVideo: React.FC<HeroScrollVideoProps> = ({
   autoPlay = false,
 
   overlay = {
-    caption: "PROJECT â¢ 07",
+    caption: "PROJECT \u00b7 07",
     heading: "Clarity in Motion",
     paragraphs: [
       "Scroll to expand the frame and reveal the story.",
@@ -496,8 +496,8 @@ export const HeroScrollVideo: React.FC<HeroScrollVideoProps> = ({
         /* System theme: define light defaults, override in dark */
         .hsv-root {
           /* Light */
-          --bg: var(--bg);
-          --text: #ff1115;
+          --bg: transparent;
+          --text: #0f172a;
           --muted: #6b7280;
           --muted-bg: rgba(15,17,21,0.06);
           --muted-border: rgba(15,17,21,0.12);
