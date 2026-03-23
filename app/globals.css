@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -40,6 +40,7 @@
     isolation: isolate;
     min-height: 100vh;
     overflow-x: hidden;
+    overflow-anchor: none;
     background: #080810;
     color: #e5e7eb;
     font-family: var(--font-inter), Inter, sans-serif;
@@ -152,3 +153,5 @@
 .animate-scroll-right {
   animation: scroll-right 30s linear infinite;
 }
+
+

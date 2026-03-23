@@ -1,14 +1,13 @@
-"use client";
+﻿"use client";
 
-import { FormEvent, useEffect, useState } from "react";
 import {
   Briefcase,
   ExternalLink,
   Github,
+  Handshake,
   Home,
   Linkedin,
   Mail,
-  Send,
   User,
 } from "lucide-react";
 
@@ -18,6 +17,11 @@ import { AnimatedDock } from "@/components/ui/animated-dock";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { GlowCard } from "@/components/ui/spotlight-card";
 import { TextRevealByWord } from "@/components/ui/text-reveal";
+import {
+  ContainerScroll,
+  ContainerSticky,
+  ProcessCard,
+} from "@/components/ui/process-timeline";
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +29,7 @@ const navItems = [
   { name: "Home", url: "#home", icon: Home },
   { name: "About", url: "#about", icon: User },
   { name: "Projects", url: "#projects", icon: Briefcase },
+  { name: "Experience", url: "#experience", icon: Handshake },
   { name: "Contact", url: "#contact", icon: Mail },
 ];
 
@@ -255,20 +260,6 @@ function ProjectCard({ project }: { project: Project }) {
 
 
 export default function HomePage() {
-  useEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-
-    window.scrollTo(0, 0);
-
-    return () => {
-      if ("scrollRestoration" in window.history) {
-        window.history.scrollRestoration = "auto";
-      }
-    };
-  }, []);
-
   return (
     <main className="site-shell relative isolate pb-24 text-[#e5e7eb] sm:pb-0">
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
@@ -373,7 +364,7 @@ export default function HomePage() {
         </div>
         </section>
 
-        <div id="about">
+        <div>
           <TextRevealByWord
             text={`"Ultimately, it comes down to taste. It comes down to trying to expose yourself to the best things that humans have done and then trying to bring those things into what you're doing. Picasso had a saying: good artists copy, great artists steal." - Steve Jobs`}
             className="bg-transparent"
@@ -437,6 +428,89 @@ export default function HomePage() {
         </div>
         </section>
 
+        <section id="experience" className="relative px-6 py-28 sm:px-10 lg:px-16">
+        <div className="mx-auto max-w-7xl space-y-10">
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-300/80">
+              Experiences
+            </p>
+          </div>
+
+          <ContainerScroll className="min-h-0">
+            <ContainerSticky className="top-24">
+              <ProcessCard
+                itemsLength={1}
+                index={0}
+                size="xl"
+                variant="light"
+                className="min-w-full max-w-full border-white/0 bg-transparent p-0 shadow-none"
+              >
+                <GlowCard
+                  customSize
+                  glowColor="purple"
+                  className="w-full rounded-[40px] border-white/0 bg-white/[0.02] p-0"
+                >
+                  <div className="grid w-full gap-12 rounded-[36px] bg-black/20 p-8 lg:grid-cols-[1.15fr_0.95fr] lg:gap-14 sm:p-10 lg:p-12">
+                    <div>
+                      <div className="mb-8 border-l-2 border-violet-500/60 pl-4 last:mb-0">
+                        <div className="flex flex-wrap items-center gap-3">
+                          <h3 className="text-xl font-black text-white sm:text-2xl">
+                            Discord Bot Developer
+                          </h3>
+                          <span className="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">
+                            Freelance
+                          </span>
+                          <span className="text-sm text-zinc-500">2024 — Present</span>
+                        </div>
+                        <p className="mt-2 text-sm leading-7 text-zinc-400">
+                          I build custom Discord bots from scratch — modular cog systems, Gemini-powered AI chat, slash commands, XP leveling, automated moderation, event scheduling, and web dashboards. Every bot is tailored to what the server actually needs.
+                        </p>
+                      </div>
+
+                      <div className="border-l-2 border-violet-500/60 pl-4">
+                        <div className="flex flex-wrap items-center gap-3">
+                          <h3 className="text-xl font-black text-white sm:text-2xl">
+                            Discord Server Manager
+                          </h3>
+                          <span className="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan-200">
+                            Freelance
+                          </span>
+                          <span className="text-sm text-zinc-500">2024 — Present</span>
+                        </div>
+                        <p className="mt-2 text-sm leading-7 text-zinc-400">
+                          I set up, organise, and moderate Discord communities — roles, channels, permission systems, automod rules, bots, and onboarding flows. I also handle ongoing moderation and keep servers running cleanly.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col justify-center">
+                      <p className="max-w-xl text-base leading-8 text-zinc-300 sm:text-lg">
+                        I take on freelance work for Discord projects — whether that&apos;s building a bot end-to-end, automating server management, or setting up a community from scratch. If you need something built or managed, I&apos;m open to it.
+                      </p>
+
+                      <div>
+                        <a
+                          href="https://services.rigvedbhat.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-6 inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-violet-500"
+                        >
+                          View My Services
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                        <p className="mt-2 text-xs text-zinc-600">
+                          services.rigvedbhat.com — coming soon
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </GlowCard>
+              </ProcessCard>
+            </ContainerSticky>
+          </ContainerScroll>
+        </div>
+        </section>
+
         <section id="contact" className="relative z-20 px-6 py-28 sm:px-10 lg:px-16">
         <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
           <div className="mb-10 space-y-3">
@@ -494,3 +568,11 @@ export default function HomePage() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
